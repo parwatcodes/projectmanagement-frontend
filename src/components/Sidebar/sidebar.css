@@ -96,6 +96,7 @@
 
 .bulb-wrap #bulb {
   height: 40px;
+  filter: drop-shadow(0 0 0.99rem yellow);
 }
 
 .widget-wrapper {
