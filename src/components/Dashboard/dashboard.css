@@ -9,11 +9,56 @@
   flex: 1;
   background-color: #F5F5F5;
   border-radius: 16px 16px 0px 0px;
-  padding: 10px;
+  padding: 20px;
+}
+
+.listName {
+  color: #0D062D;
+  font-family: Inter;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  border-bottom: 3px solid blue;
+  padding: 5px 20px 15px 0px;
+  display: flex;
+  align-items: center;
+}
+
+.status {
+  color: #D58D49;
+  font-family: Inter;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  background: rgba(223, 168, 116, 0.20);
+  padding: 4px 6px;
+  border-radius: 4px;
+  display: inline-block;
+}
+
+.list:not(:last-child) {
+  margin-right: 15px;
+}
+
+.taskWrapper {
+  margin-top: 25px;
 }
 
 .task {
-  margin: 20px;
+  border-radius: 10px;
+  background: #FFF;
+  /* margin-top: 15px; */
+  padding: 20px;
+}
+
+.task * {
+  margin-bottom: 8px;
+}
+
+.task:not(:last-child) {
+  margin-bottom: 15px;
 }
 
 .card {
@@ -26,4 +71,12 @@
 
 h2 {
   margin-bottom: 10px;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  margin-right: 10px;
+  background-color: blue;
+  border-radius: 50%; /* To make it a circle */
 }

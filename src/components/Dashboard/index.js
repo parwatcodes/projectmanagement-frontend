@@ -5,19 +5,26 @@ import DashboardHeader from '../DashboardHeader';
 
 const initialCards = {
   todo: [
-    { id: '1', content: 'Task 1' },
-    { id: '2', content: 'Task 2' },
+    { id: '1', title: 'Brainstorming', description: "Brainstorming brings team members' diverse experience into play." },
+    { id: '2', title: 'Task 2', description: "Brainstorming brings team members' diverse experience into play." },
   ],
   inProgress: [
-    { id: '3', content: 'Task 3' },
+    { id: '3', title: 'Task 3', description: "Brainstorming brings team members' diverse experience into play." },
   ],
   inReview: [
-    { id: '4', content: 'Task 4' },
+    { id: '4', title: 'Task 4', description: "Brainstorming brings team members' diverse experience into play." },
   ],
   done: [
-    { id: '5', content: 'Task 5' },
-    { id: '6', content: 'Task 6' },
+    { id: '5', title: 'Task 5', description: "Brainstorming brings team members' diverse experience into play." },
+    { id: '6', title: 'Task 6', description: "Brainstorming brings team members' diverse experience into play." },
   ],
+};
+
+const listNameMappings = {
+  todo: 'To Do',
+  inProgress: 'In Progress',
+  inReview: 'In Review',
+  done: 'Done'
 };
 
 const Dashboard = () => {
@@ -34,12 +41,17 @@ const Dashboard = () => {
 
           return (
             <div className='list' key={cardKey}>
-              <div>{cardKey}</div>
-              <div className='task'>
+              <div className='listName'>
+                <div class="dot"></div>
+                <div>{listNameMappings[cardKey]}</div>
+              </div>
+              <div className='taskWrapper'>
                 {listData.map(data => (
-                  <>
-                    <div>{data.content}</div>
-                  </>
+                  <div className='task'>
+                    <span className='status'>Low</span>
+                    <div className='task-title'>{data.title}</div>
+                    <div className='task-description'>{data.description}</div>
+                  </div>
                 ))}
               </div>
             </div>
