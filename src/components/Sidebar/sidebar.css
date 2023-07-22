@@ -13,7 +13,12 @@
   text-transform: uppercase;
 }
 
-.project-list .s-list, .menu-wrapper div {
+.main-wrapper {
+  margin-top: 50px;
+}
+
+.project-list .s-list,
+.menu-wrapper div {
   display: flex;
   align-items: center;
   color: #787486;
@@ -68,4 +73,85 @@
   height: 1px;
   margin: 20px 0;
   background-color: #DBDBDB;
+}
+
+.widget-main {
+  position: relative;
+}
+
+.bulb-wrap {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  padding: 20px;
+  top: -40px;
+  border-radius: 50%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #F5F5F5;
+  transform: translateX(-50%);
+  height: 40px;
+  width: 40px;
+}
+
+.bulb-wrap #bulb {
+  height: 30px;
+}
+
+.widget-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #F5F5F5;
+  padding: 40px 20px 20px 20px;
+  border-radius: 16px;
+}
+
+.widget-wrapper> :not(:last-child) {
+  margin-bottom: 15px;
+}
+
+.widget-h2 {
+  color: #000;
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.widget-description {
+  color: #787486;
+  text-align: center;
+  font-family: Inter;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.widget-action {
+  border-radius: 4px;
+  background: #FFF;
+  padding: 10px 20px;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+}
+
+#logo {
+  height: 25px;
+  width: 30px;
+}
+
+.logo-container h3 {
+  margin: 0;
+  color: #0D062D;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  margin-left: 10px;
 }

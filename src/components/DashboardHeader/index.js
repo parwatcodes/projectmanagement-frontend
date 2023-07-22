@@ -1,25 +1,36 @@
 import React from 'react';
 
-import SearchIcon from '../images/icons/search.svg'
+import './styles.css';
+import SearchIcon from '../images/icons/search.svg';
+import DownArrow from '../images/icons/down-arrow.svg';
 
 const DashboardHeader = () => {
 
   return <div style={{
-    display: 'flex'
+    display: 'flex',
+    justifyContent: 'space-between'
   }}>
-    <div>
-      <img src={SearchIcon} alt='' />
-      <input type='text' placeholder='Search for anything...' />
+    <div className='search-bar'>
+      <img id='search-icon' src={SearchIcon} alt='' />
+      <input className='search-input' type='text' placeholder='Search for anything...' />
     </div>
     <div style={{
       display: 'flex',
-      fontSize: '12px'
+      fontSize: '12px',
+      alignItems: 'center'
     }}>
-      <div>
-        <p>Parwat Kunwar</p>
-        <p>Admin</p>
+      <div className='info-wrapper'>
+        <p id='name'>Parwat Kunwar</p>
+        <p id='role'>Admin</p>
       </div>
-      <div>PK</div>
+      <div style={{
+        display: 'flex',
+        alignItems: 'center',
+        cursor: 'pointer'
+      }}>
+        <div id='img-alt'>PK</div>
+        <img src={DownArrow} alt='arrow' />
+      </div>
     </div>
   </div>;
 };

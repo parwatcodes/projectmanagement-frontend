@@ -9,7 +9,7 @@ import SettingIcon from '../images/icons/setting.svg';
 const Menu = () => {
   return (
     <>
-      <div>
+      <div className="main-wrapper">
         <div className="menu-wrapper">
           <img src={HomeIcon} alt="home" />
           <div>Home</div>

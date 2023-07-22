@@ -32,9 +32,11 @@ const Dashboard = () => {
 
   return (
     <div style={{
-      flex: 1
+      flex: 1,
+      padding: '10px 40px'
     }}>
       <DashboardHeader />
+      <div className='line-abs'></div>
       <div className="dashboard">
         {Object.keys(cards).map(cardKey => {
           let listData = cards[cardKey];
