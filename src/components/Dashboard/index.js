@@ -44,6 +44,7 @@ const Dashboard = () => {
               <div className='listName'>
                 <div class="dot"></div>
                 <div>{listNameMappings[cardKey]}</div>
+                <div>+</div>
               </div>
               <div className='taskWrapper'>
                 {listData.map(data => (

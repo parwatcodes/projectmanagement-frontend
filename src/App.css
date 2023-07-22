@@ -32,3 +32,9 @@
 .main {
   display: flex;
 }
+
+.line-v {
+  width: 1px;
+  height: 100vh; /* Adjust the height as per your requirement */
+  background-color: #DBDBDB;
+}

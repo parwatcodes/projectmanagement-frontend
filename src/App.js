@@ -11,6 +11,7 @@ function App() {
       </header>
       <div className='main'>
         <Sidebar />
+        <div className='line-v'></div>
         <Dashboard />
       </div>
     </div>

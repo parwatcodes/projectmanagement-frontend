@@ -1,17 +1,14 @@
 import './sidebar.css';
+import Menu from './menu';
+import ProjectMenu from './ProjectMenu';
 
 const Sidebar = () => {
   return (
     <div className="sidebar">
-      <h2>Projects</h2>
-      <div className='project-list'>
-        <div className='list-h4'>Project 1</div>
-        <div className='list-h4'>Project 2</div>
-        <div className='list-h4'>Project 3</div>
-        <div className='list-h4'>Project 4</div>
-      </div>
+      <Menu />
+      <ProjectMenu />
     </div>
-  );
-};
+  )
+}
 
 export default Sidebar;

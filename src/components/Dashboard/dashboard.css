@@ -78,5 +78,6 @@ h2 {
   height: 8px;
   margin-right: 10px;
   background-color: blue;
+  display: inline-block;
   border-radius: 50%; /* To make it a circle */
 }
