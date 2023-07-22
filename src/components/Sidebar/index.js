@@ -3,13 +3,13 @@ import './sidebar.css';
 const Sidebar = () => {
   return (
     <div className="sidebar">
-      <h2>Options</h2>
-      <ul>
-        <li>Option 1</li>
-        <li>Option 2</li>
-        <li>Option 3</li>
-        <li>Option 4</li>
-      </ul>
+      <h2>Projects</h2>
+      <div className='project-list'>
+        <div className='list-h4'>Project 1</div>
+        <div className='list-h4'>Project 2</div>
+        <div className='list-h4'>Project 3</div>
+        <div className='list-h4'>Project 4</div>
+      </div>
     </div>
   );
 };

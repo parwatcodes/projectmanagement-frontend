@@ -5,12 +5,14 @@ import './App.css';
 
 function App() {
   return (
-    <div className="App">
+    <div className="app">
       <header>
 
       </header>
-      <Sidebar />
-      <Dashboard />
+      <div className='main'>
+        <Sidebar />
+        <Dashboard />
+      </div>
     </div>
   );
 }
