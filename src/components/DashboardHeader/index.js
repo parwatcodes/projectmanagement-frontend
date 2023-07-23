@@ -28,8 +28,12 @@ const DashboardHeader = () => {
         alignItems: 'center',
         cursor: 'pointer'
       }}>
-        <div id='img-alt'>PK</div>
-        <img src={DownArrow} alt='arrow' />
+        <div style={{
+          display: 'flex'
+        }}>
+          <img id='img-alt' src='https://i.pravatar.cc/500?img=10' alt='pp' />
+          <img src={DownArrow} alt='arrow' />
+        </div>
       </div>
     </div>
   </div>;

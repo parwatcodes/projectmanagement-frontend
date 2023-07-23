@@ -16,7 +16,8 @@ const ProjectMenu = () => {
           padding: '8px 3px',
           border: '1px solid grey',
           borderRadius: '4px',
-          lineHeight: '0.1'
+          lineHeight: '0.0',
+          fontWeight: 200
         }}>+</span>
       </div>
       <div className='project-list'>

@@ -2,6 +2,7 @@ import React from 'react';
 
 import './dashboard.css';
 import DashboardHeader from '../DashboardHeader';
+import DashboardProject from "../DashboardProject";
 
 const initialCards = {
   todo: [
@@ -37,6 +38,7 @@ const Dashboard = () => {
     }}>
       <DashboardHeader />
       <div className='line-abs'></div>
+      <DashboardProject />
       <div className="dashboard">
         {Object.keys(cards).map(cardKey => {
           let listData = cards[cardKey];

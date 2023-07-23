@@ -11,6 +11,7 @@
   border-radius: 16px 16px 0px 0px;
   padding: 20px;
   height: 100vh;
+  /* min-width: 300px; */
 }
 
 .listName {
@@ -50,7 +51,6 @@
 .task {
   border-radius: 10px;
   background: #FFF;
-  /* margin-top: 15px; */
   padding: 20px;
 }
 

@@ -1,0 +1,80 @@
+.project-label {
+  margin: 50px 0;
+  font-size: 40px;
+  font-weight: 700;
+  color: #0D062D;
+  font-family: Inter;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  text-transform: capitalize;
+}
+
+.members {
+  display: flex;
+  text-align: right;
+  max-width: 200px;
+}
+
+.members img {
+  border-radius: 50%;
+  position: relative;
+  left: -5px;
+  margin-left: -10px;
+  z-index: 1;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
+  height: 40px;
+  width: 40px;
+  border: 3px solid white;
+}
+
+.invite-member {
+  display: flex;
+  align-items: center;
+  margin-right: 25px;
+}
+
+.invite-member p {
+  color: #5030E5;
+  font-size: 14px;
+  font-style: normal;
+  margin: 0;
+  font-weight: 500;
+  line-height: normal;
+  text-transform: capitalize;
+  margin-left: 5px;
+}
+
+.select-wrapper {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 6px;
+  border: 1px solid #787486;
+}
+
+#filter-select {
+  padding: 10px 20px;
+  padding-left: 0;
+  border-radius: 5px;
+  outline: none;
+  color: #787486;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.select-wrapper::before {
+  content: url(/src/components/images/icons/filter.svg);
+  height: 15px;
+  width: 15px;
+  display: block;
+  margin: 0px 5px 0 15px;
+  line-height: 0;
+}
+
+select {
+  border: none;
+  border-right: 15px solid transparent;
+}
