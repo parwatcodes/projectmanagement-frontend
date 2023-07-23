@@ -34,7 +34,7 @@ const Dashboard = () => {
   return (
     <div style={{
       flex: 1,
-      padding: '10px 40px'
+      padding: '20px 40px'
     }}>
       <DashboardHeader />
       <div className='line-abs'></div>

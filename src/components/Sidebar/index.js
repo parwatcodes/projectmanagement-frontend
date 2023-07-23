@@ -18,6 +18,9 @@ const Sidebar = () => {
 
         <div>
           <img src={LeftArrow} alt='hide-sidebar' />
+          <img src={LeftArrow} style={{
+            marginLeft: '-14px'
+          }} alt='hide-sidebar' />
         </div>
       </div>
       <Menu />
