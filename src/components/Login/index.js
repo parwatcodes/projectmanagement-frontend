@@ -12,24 +12,28 @@ const Login = () => {
     }}>
       <div id='form-wrapper'>
         <div className='wrapper'>
-        <form id='login-form'>
-          <h2>Welcome 👋</h2>
-          <p>Today is a new day. It's your day. You shape it. Sign in to start managing your projects.</p>
-          <div className='input-wrap'>
-            <label for="email">Email</label>
-            <input type="text" id="email" name="email" />
-          </div>
+          <form id='login-form'>
+            <div id='message-wrapper'>
+              <h2>Welcome 👋</h2>
+              <p>Today is a new day. It's your day. You shape it.</p>
+              <p>Sign in to start managing your projects and tasks.</p>
+            </div>
+            <div className='input-wrap'>
+              <label for="email">Email</label>
+              <input type="text" id="email" name="email" />
+            </div>
 
-          <div className='input-wrap'>
-            <label for="password">Password</label>
-            <input type="text" id="password" name="password" />
+            <div className='input-wrap'>
+              <label for="password">Password</label>
+              <input type="text" id="password" name="password" />
+            </div>
+            <span id='forgot-pass'>Forgot password?</span>
+            <input type="submit" value="Submit" />
+          </form>
+          <div id="sign-up-m">Don't have an account? <span>Sign up</span></div>
+          <div id='copyright'>
+            {`©${new Date().getFullYear()} ALL RIGHTS RESERVED`}
           </div>
-          <input type="submit" value="Submit" />
-        </form>
-        <div id="sign-up-m">Don't have an account? <span>Sign up</span></div>
-      <div id='copyright'>
-        {`©${new Date().getFullYear()} ALL RIGHTS RESERVED`}
-      </div>
         </div>
       </div>
       <div id='page-art'>
