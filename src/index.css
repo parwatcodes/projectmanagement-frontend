@@ -1,0 +1,11 @@
+/* global-styles.css */
+html, body {
+  font-family: Inter;
+  font-weight: normal;
+  /* Add any other font-related properties here */
+}
+
+/* Use inherit to propagate the font to all elements */
+* {
+  font-family: inherit;
+}
