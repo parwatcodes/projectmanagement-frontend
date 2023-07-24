@@ -36,9 +36,9 @@ const DashboardHeader = () => {
           display: 'flex',
           position: 'relative'
         }} onClick={() => setShowProfileModal(!showProfileModal)} >
-          <img id='img-alt' src='https://i.pravatar.cc/500?img=10' alt='pp' />
+          <img id='img-alt' src='https://i.pravatar.cc/500?img=12' alt='pp' />
           <img src={DownArrow} alt='arrow' />
-          <span class="logged logged-in">●</span>
+          <span class="logged logged-in"></span>
         </div>
       </div>
     </div>
