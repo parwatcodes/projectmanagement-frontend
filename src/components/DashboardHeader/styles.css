@@ -58,3 +58,17 @@
   font-size: 16px;
   margin: 0 5px 0 15px;
 }
+
+.logged {
+  position: absolute;
+  right: 22px;
+  bottom: -2px;
+}
+
+.logged-in {
+  color: green;
+}
+
+.logged-out {
+  color: red;
+}
