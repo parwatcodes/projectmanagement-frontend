@@ -1,4 +1,5 @@
 import './sidebar.css';
+import AddIcon from '../images/icons/add.svg';
 
 const ProjectMenu = () => {
   return (
@@ -10,18 +11,13 @@ const ProjectMenu = () => {
         marginBottom: '10px'
       }}>
         <h2>MY PROJECTS</h2>
-        <span style={{
-          fontSize: '16px',
-          display: 'inline-block',
-          padding: '8px 3px',
-          border: '1px solid grey',
-          borderRadius: '4px',
-          lineHeight: '0.0',
-          fontWeight: 200
-        }}>+</span>
+        <img style={{
+          height: '25px',
+          width: '25px'
+        }} src={AddIcon} alt="" />
       </div>
       <div className='project-list'>
-        <div className='s-list selected-project'>
+        <div className='s-list selected'>
           <span class="dot"></span>
           <div >Mobile App</div>
         </div>

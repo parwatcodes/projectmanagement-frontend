@@ -17,28 +17,28 @@
   margin-top: 50px;
 }
 
+.project-list {
+  color: #787486;
+}
+
 .project-list .s-list,
 .menu-wrapper div {
   display: flex;
   align-items: center;
-  color: #787486;
   font-family: Inter;
   font-size: 15px;
   font-weight: 500;
   font-style: normal;
   line-height: normal;
   padding: 10px 15px;
+  cursor: pointer;
 }
 
-.selected-project {
-  color: #0D062D !important;
-  font-family: Inter;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: normal;
+.selected {
+  color: #1442AE !important;
   border-radius: 6px;
   background: rgba(80, 48, 229, 0.08);
+  text-shadow: 0.5px 0.5px #198754;
 }
 
 .sidebar ul {
@@ -62,6 +62,13 @@
 .menu-wrapper {
   display: flex;
   align-items: center;
+  padding-left: 10px;
+  color: #787486;
+}
+
+.menu-wrapper:hover, .s-list:hover {
+  color: #198754;
+  text-shadow: 0.5px 0.5px #1442AE;
 }
 
 .menu-wrapper:not(:last-child) {

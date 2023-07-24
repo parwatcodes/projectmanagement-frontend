@@ -92,3 +92,7 @@ h2 {
   background-color: #DBDBDB;
   left: 0;
 }
+
+.selectedBoard {
+  margin-top: 50px;
+}

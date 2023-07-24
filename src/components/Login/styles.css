@@ -25,7 +25,7 @@
 }
 
 #page-art img {
-  width: 70%;
+  width: 60%;
 }
 
 .input-wrap {
@@ -35,6 +35,11 @@
 
 #message-wrapper {
   margin-bottom: 40px;
+}
+
+#message-wrapper p {
+  color: #1442AE !important;
+  text-shadow: 0.5px 0.5px #198754 !important;
 }
 
 #login-form h2 {
