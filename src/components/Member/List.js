@@ -1,7 +1,6 @@
 import React from 'react';
 
 const List = (props) => {
-
   const { data } = props;
 
   return (
@@ -11,8 +10,6 @@ const List = (props) => {
         <div id='h-col'>Email</div>
         <div id='h-col'>Role</div>
         <div id='h-col'>Hourly Rate</div>
-        <div id='h-col'>Assigned Tasks</div>
-        <div id='h-col'>Projects</div>
       </div>
       <div className='t-data'>
         {data.map(user => (
@@ -23,11 +20,11 @@ const List = (props) => {
             </div>
             <div id='data'>{user.email}</div>
             <div id='data'>
+              <div>
+              </div>
               <span className='role'>{user.role}</span>
             </div>
             <div id='data'>{user.hourlyRate}</div>
-            <div id='data'>{user.assignedTask?.toString()}</div>
-            <div id='data'>{user.projects?.toString()}</div>
           </div>
         ))}
       </div>

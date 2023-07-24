@@ -8,7 +8,8 @@
 }
 
 .t-header #h-col {
-  width: 50px;
+  min-width: 200px;
+  font-weight: 400;
 }
 
 .t-data {}
@@ -31,7 +32,7 @@
 #data {
   display: flex;
   align-items: center;
-  width: 50px;
+  min-width: 200px;
   font-size: 14px;
 }
 
@@ -59,4 +60,12 @@
   line-height: 1.5;
   margin-left: 5px;
   cursor: pointer;
+}
+
+.eye-container {
+  cursor: pointer;
+}
+
+.data {
+  margin-top: 10px;
 }
