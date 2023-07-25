@@ -8,6 +8,8 @@ import './App.css';
 function App() {
 
   const [selectedBoard, setSelectedBoard] = React.useState(1);
+  // Project id, or use routing
+  const [selectedProject, setSelectedProject] = React.useState(1);
 
   return (
     <div className="app">

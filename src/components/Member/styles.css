@@ -26,7 +26,7 @@
 }
 
 #r-data:nth-child(odd) {
-  background-color: #efeedc;
+  background-color: #f9f9f9;
 }
 
 #r-data:hover{
