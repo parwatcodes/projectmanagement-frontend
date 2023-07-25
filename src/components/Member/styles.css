@@ -1,10 +1,10 @@
 .t-header {
   display: flex;
   justify-content: space-between;
-  padding: 15px 10px;
+  padding: 20px 10px;
   font-size: 16px;
-  border-top: 1px solid #DBDBDB;
-  border-bottom: 1px solid #DBDBDB;
+  border-top: 2px solid #DBDBDB;
+  border-bottom: 2px solid #DBDBDB;
 }
 
 .t-header #h-col {
@@ -21,9 +21,17 @@
   cursor: pointer;
 }
 
+#r-data:not(:last-child){
+  border-bottom: 1px solid #DBDBDB;
+}
+
+#r-data:nth-child(odd) {
+  background-color: #efeedc;
+}
+
 #r-data:hover{
   border-radius: 3px;
-  background: rgba(80, 48, 229, 0.08);
+  background-color: rgba(3, 3, 3, 0.10);
   text-shadow: 0.2px 0.2px #198754;
 }
 
@@ -51,13 +59,13 @@
 
 .member-header {
   display: flex;
-  font-size: 25px;
+  font-size: 40px;
   font-weight: 600;
   margin-bottom: 20px;
 }
 
 .add-mem {
-  line-height: 1.5;
+  line-height: 1.4;
   margin-left: 5px;
   cursor: pointer;
 }

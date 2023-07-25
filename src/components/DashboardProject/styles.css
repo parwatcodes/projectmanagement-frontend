@@ -53,14 +53,14 @@
 }
 
 #filter-select {
-  padding: 10px 20px;
+  padding: 10px 15px;
   padding-left: 0;
   border-radius: 5px;
   outline: none;
   color: #787486;
-  font-size: 14px;
+  font-size: 13px;
   font-style: normal;
-  font-weight: 400;
+  font-weight: 500;
   line-height: normal;
 }
 
@@ -69,11 +69,11 @@
   height: 15px;
   width: 15px;
   display: block;
-  margin: 0px 5px 0 15px;
+  margin: 0px 5px 0 10px;
   line-height: 0;
 }
 
 select {
   border: none;
-  border-right: 15px solid transparent;
+  border-right: 10px solid transparent;
 }

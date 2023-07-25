@@ -15,7 +15,7 @@ function App() {
 
       </header>
       <div className='main'>
-        <Sidebar setSelectedBoard={setSelectedBoard} />
+        <Sidebar setSelectedBoard={setSelectedBoard} selectedBoard={selectedBoard} />
         <div className='line-v'></div>
         <Dashboard selectedBoard={selectedBoard} setSelectedBoard={setSelectedBoard} />
       </div>
