@@ -168,13 +168,13 @@
   margin-left: 10px;
 }
 
-.add-project-btn {
+.add-project-btn, .add-mem, .add-task-btn {
   height: 25px;
   width: 25px;
   cursor: pointer;
 }
 
-.add-project-btn:hover {
+.add-project-btn:hover, .add-mem:hover, .add-task-btn:hover {
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
   border-radius: 8px;
 }

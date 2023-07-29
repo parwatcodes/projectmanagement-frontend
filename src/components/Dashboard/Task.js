@@ -1,5 +1,7 @@
 import React from "react";
 
+import * as fetch from '../../api/fetch';
+
 const initialCards = {
   todo: [
     { id: '1', title: 'Brainstorming', description: "Brainstorming brings team members' diverse experience into play." },
@@ -25,34 +27,44 @@ const listNameMappings = {
 };
 
 const Task = () => {
-  const [cards, setCards] = React.useState(initialCards);
+  const [tasks, setTasks] = React.useState(initialCards);
+
+  React.useEffect(() => {
+    try {
+      fetch.get('/tasks')
+        .then(resp => setTasks(resp.data))
+        .catch(err => { throw err; });
+    } catch (error) {
+      console.log('console. error', error);
+    }
+  }, []);
 
   return (
     <div className="dashboard">
-    {Object.keys(cards).map(cardKey => {
-      let listData = cards[cardKey];
+      {Object.keys(tasks).map(cardKey => {
+        let listData = tasks[cardKey];
 
-      return (
-        <div className='list' key={cardKey}>
-          <div className='listName'>
-            <div className="dot"></div>
-            <div>{listNameMappings[cardKey]}</div>
-            <div>+</div>
+        return (
+          <div className='list' key={cardKey}>
+            <div className='listName'>
+              <div className="dot"></div>
+              <div>{listNameMappings[cardKey]}</div>
+              <div>+</div>
+            </div>
+            <div className='taskWrapper'>
+              {listData.map(data => (
+                <div className='task'>
+                  <span className='status'>Low</span>
+                  <div className='task-title'>{data.title}</div>
+                  <div className='task-description'>{data.description}</div>
+                </div>
+              ))}
+            </div>
           </div>
-          <div className='taskWrapper'>
-            {listData.map(data => (
-              <div className='task'>
-                <span className='status'>Low</span>
-                <div className='task-title'>{data.title}</div>
-                <div className='task-description'>{data.description}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      );
-    })}
-  </div>
-  )
-}
+        );
+      })}
+    </div>
+  );
+};
 
 export default Task;

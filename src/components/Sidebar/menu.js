@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 
 import { ReactComponent as HomeIcon } from '../images/icons/home.svg';
 import { ReactComponent as TaskIcon } from '../images/icons/task.svg';
@@ -9,6 +9,7 @@ import { ReactComponent as SettingIcon } from '../images/icons/setting.svg';
 const Menu = (props) => {
   const svgStroke = '#1442AE';
   const navigate = useNavigate();
+  const location = useLocation();
 
   const getSelectedStyle = (tabId) => {
     return props.selectedBoard === tabId ? 'menu-wrapper selected' : 'menu-wrapper';
@@ -17,6 +18,13 @@ const Menu = (props) => {
   const handleTabClick = (tabId) => {
     props.setSelectedBoard(tabId);
   };
+
+  // Set the tab according to the url pathname.
+  // React.useEffect(() => {
+  //   if (location.pathname) {
+
+  //   }
+  // }, [])
 
   return (
     <>

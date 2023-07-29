@@ -24,7 +24,7 @@ const Login = () => {
 
   const loginSuccess = () => {
     localStorage.setItem('email', formData.email);
-    navigate('/home')
+    navigate('/home');
   };
 
   const handleSubmit = (e) => {
@@ -33,16 +33,16 @@ const Login = () => {
     setIsLoading(true);
     setTimeout(() => {
       fetch.post('/login', formData)
-      .then(resp => {
-        if (resp.success) {
-          loginSuccess();
-        } else {
-          setErrorMessage(resp.message);
-        }
-      }).catch(err => {
-        console.log('Error occurred while making the API call:', err);
-      }).finally(() => setIsLoading(false));
-    }, 1000)
+        .then(resp => {
+          if (resp.success) {
+            loginSuccess();
+          } else {
+            setErrorMessage(resp.message);
+          }
+        }).catch(err => {
+          console.log('Error occurred while making the API call:', err);
+        }).finally(() => setIsLoading(false));
+    }, 1000);
   };
 
   return (
@@ -76,7 +76,15 @@ const Login = () => {
             <span id='forgot-pass'>Forgot password?</span>
             <button id='login-submit' type="submit" value="Submit" >
               Submit&nbsp;
-              <ClipLoader size={10} color="#fff" speedMultiplier={2} loading={isLoading} />
+              <div style={{
+                height: '15px',
+                width: '15px',
+                display: 'flex',
+                alignItems: 'center',
+                visibility: isLoading ? 'visible' : 'hidden'
+              }}>
+                <ClipLoader size={10} color="#fff" speedMultiplier={2} loading={isLoading} />
+              </div>
             </button>
           </form>
           <div id="sign-up-m">Don't have an account? <span>Sign up</span></div>

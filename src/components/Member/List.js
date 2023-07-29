@@ -12,10 +12,10 @@ const List = (props) => {
         <div id='h-col'>Hourly Rate</div>
       </div>
       <div className='t-data'>
-        {data.map(user => (
+        {data.map((user, idx) => (
           <div id='r-data'>
             <div id='data'>
-              <img src='https://i.pravatar.cc/500?img=12' alt='' />
+              <img src={`https://i.pravatar.cc/500?img=${idx}`} alt='' />
               <div>{user.fullname}</div>
             </div>
             <div id='data'>{user.email}</div>

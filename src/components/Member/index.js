@@ -1,44 +1,36 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
-import List from './List';
 import './styles.css';
-import {ReactComponent as AddIcon } from '../images/icons/add.svg';
-
-const data = [
-  {
-    "fullname": "John Smith",
-    "email": "john.smith@example.com",
-    "role": "Admin"
-  },
-  {
-    "fullname": "Jane Doe",
-    "email": "jane.doe@example.com",
-    "role": "Member",
-    "hourlyRate": "$25",
-    "assignedTasks": ["Task 1", "Task 2", "Task 3"],
-    "projects": ["Project A", "Project B"]
-  },
-  {
-    "fullname": "Michael Johnson",
-    "email": "michael.johnson@example.com",
-    "role": "Member",
-    "hourlyRate": "$30",
-    "assignedTasks": ["Task 4", "Task 5"],
-    "projects": ["Project C", "Project P"]
-  }
-];
+import List from './List';
+import * as fetch from '../../api/fetch';
+import { ReactComponent as AddIcon } from '../images/icons/add.svg';
 
 const Member = () => {
+  const navigate = useNavigate();
+  const [users, setUsers] = React.useState([]);
+
+  React.useEffect(() => {
+    try {
+      fetch.get('/users')
+        .then(resp => setUsers(resp.data))
+        .catch(err => { throw err; });
+    } catch (error) {
+      console.log('console. error', error);
+    }
+  }, []);
 
   return (
     <>
       <div className='member-header'>
         <div>Members</div>
-        <div className='add-mem'>
+        <div className='add-mem' onClick={() => {
+          navigate('/add-user')
+        }}>
           <AddIcon height={30} width={30} />
         </div>
       </div>
-      <List data={data} />
+      <List data={users} />
     </>
   );
 };

@@ -5,7 +5,8 @@ import EditIcon from '../images/icons/edit.svg';
 import LinkIcon from '../images/icons/link.svg';
 import AddIcon from '../images/icons/add.svg';
 
-const DashboardProject = () => {
+const DashboardProject = (props) => {
+  const { selectedProject } = props;
 
   return (
     <div className="project-label">
@@ -18,7 +19,7 @@ const DashboardProject = () => {
         <div className="title" style={{
           display: 'flex'
         }}>
-          <div>Mobile App</div>
+          <div>{selectedProject.name}</div>
           <div style={{
             display: 'flex',
             marginLeft: '5px'

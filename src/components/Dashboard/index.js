@@ -9,6 +9,7 @@ import DashboardHome from '../DashboardHome';
 import ProjectForm from '../Forms/ProjectForm';
 import DashboardHeader from '../DashboardHeader';
 import DashboardProject from "../DashboardProject";
+import TaskForm from '../Forms/TaskForm';
 
 const Dashboard = (props) => {
 
@@ -23,12 +24,14 @@ const Dashboard = (props) => {
         <Routes>
           <Route path="/home" element={<></>} />
           <Route path="/tasks" element={<>
-            <DashboardProject />
+            <DashboardProject selectedProject={props.selectedProject} />
             <Task />
           </>} />
           <Route path="/members" element={<Member />} />
           <Route path="/settings" element={<></>} />
           <Route path="/add-project" element={<ProjectForm />} />
+          <Route path="/add-user" element={<UserForm />} />
+          <Route path="/add-task" element={<TaskForm />} />
         </Routes>
       </div>
     </div>

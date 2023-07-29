@@ -48,3 +48,9 @@ body {
   height: 100vh; /* Adjust the height as per your requirement */
   background-color: #DBDBDB;
 }
+
+.head-title {
+  font-size: 40px;
+  font-weight: 600;
+  margin-bottom: 40px;
+}
