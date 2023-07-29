@@ -1,7 +1,7 @@
 import React from 'react';
 
 const List = (props) => {
-  const { data } = props;
+  const { data, navigate } = props;
 
   return (
     <div>
@@ -13,7 +13,7 @@ const List = (props) => {
       </div>
       <div className='t-data'>
         {data.map((user, idx) => (
-          <div id='r-data'>
+          <div id='r-data' onClick={() => navigate(user._id)}>
             <div id='data'>
               <img src={`https://i.pravatar.cc/500?img=${idx}`} alt='' />
               <div>{user.fullname}</div>

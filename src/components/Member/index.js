@@ -30,7 +30,7 @@ const Member = () => {
           <AddIcon height={30} width={30} />
         </div>
       </div>
-      <List data={users} />
+      <List data={users} navigate={navigate} />
     </>
   );
 };
