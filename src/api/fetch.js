@@ -1,16 +1,9 @@
-const BASE_URL = 'http://127.0.0.1:3001/';
+const BASE_URL = 'http://127.0.0.1:3001';
 
 const headers = {
   'Content-Type': 'application/json',
 };
 
-const checkStatus = (response) => {
-  if (response.ok) {
-    return response.json();
-  } else {
-    throw new Error(response.statusText);
-  }
-};
 
 async function fetchApi(url, options = {}) {
   const requestOptions = {
@@ -20,11 +13,11 @@ async function fetchApi(url, options = {}) {
 
   try {
     const response = await fetch(url, requestOptions);
-    const data = await checkStatus(response);
+    const data = await response.json();
 
     return data;
   } catch (error) {
-    throw new Error(`API call failed: ${error.message}`);
+    throw new Error(`API call failed: ${error}`);
   }
 }
 

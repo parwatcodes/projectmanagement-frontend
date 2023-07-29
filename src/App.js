@@ -18,7 +18,7 @@ function App() {
 
   React.useEffect(() => {
     try {
-      fetch.get('projects').then(resp => {
+      fetch.get('/projects').then(resp => {
         setProjects(resp.data);
         setSelectedProject(resp.data[0]);
       });
