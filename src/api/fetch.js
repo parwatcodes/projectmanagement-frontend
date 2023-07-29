@@ -1,4 +1,4 @@
-const BASE_URL = 'https://127.0.0.1';
+const BASE_URL = 'http://127.0.0.1:3001/';
 
 const headers = {
   'Content-Type': 'application/json',
@@ -12,7 +12,7 @@ const checkStatus = (response) => {
   }
 };
 
-export default async function fetchApi(url, options = {}) {
+async function fetchApi(url, options = {}) {
   const requestOptions = {
     headers: { ...headers, ...options.headers },
     ...options,
@@ -27,6 +27,13 @@ export default async function fetchApi(url, options = {}) {
     throw new Error(`API call failed: ${error.message}`);
   }
 }
+
+export const get = (url, options = {}) => {
+  return fetchApi(`${BASE_URL}${url}`, {
+    ...options,
+    method: 'GET',
+  });
+};
 
 export const post = (url, data = {}, options = {}) => {
 

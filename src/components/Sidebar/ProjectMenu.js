@@ -1,7 +1,9 @@
 import './sidebar.css';
 import AddIcon from '../images/icons/add.svg';
 
-const ProjectMenu = () => {
+const ProjectMenu = (props) => {
+  const { projects } = props;
+
   return (
     <div>
       <div style={{
@@ -17,25 +19,12 @@ const ProjectMenu = () => {
         }} src={AddIcon} alt="" />
       </div>
       <div className='project-list'>
-        <div className='s-list selected'>
-          <span class="dot"></span>
-          <div >Mobile App</div>
-        </div>
-
-        <div className='s-list'>
-          <span class="dot"></span>
-          <div >Website Redesign</div>
-        </div>
-
-        <div className='s-list'>
-          <span class="dot"></span>
-          <div >Design System</div>
-        </div>
-
-        <div className='s-list'>
-          <span class="dot"></span>
-          <div >Wireframes</div>
-        </div>
+        {projects.map(project => (
+          <div key={project._id} className='s-list selected'>
+            <span className="dot"></span>
+            <div >{project.name}</div>
+          </div>
+        ))}
       </div>
     </div>
   );

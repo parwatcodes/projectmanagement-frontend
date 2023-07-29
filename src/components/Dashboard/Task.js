@@ -35,7 +35,7 @@ const Task = () => {
       return (
         <div className='list' key={cardKey}>
           <div className='listName'>
-            <div class="dot"></div>
+            <div className="dot"></div>
             <div>{listNameMappings[cardKey]}</div>
             <div>+</div>
           </div>

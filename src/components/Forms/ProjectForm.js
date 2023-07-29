@@ -1,22 +1,42 @@
-import { useForm } from "react-hook-form";
+import React from 'react';
+import { useForm, Controller } from 'react-hook-form';
 
-export default function ProjectForm() {
-  const { register, handleSubmit, watch, formState: { errors } } = useForm();
-  const onSubmit = data => console.log(data);
+const ProjectForm = () => {
+  const { control, handleSubmit } = useForm();
 
-  console.log(watch("example")); // watch input value by passing the name of it
+  // This function will be called when the form is submitted
+  const onSubmit = (data) => {
+    console.log(data);
+    // You can handle form submission logic here
+  };
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      {/* register your input into the hook by invoking the "register" function */}
-      <input defaultValue="test" {...register("example")} />
+      <div>
+        <label>Name:</label>
+        {/* 'name' is the name of the field, and 'control' is from useForm() */}
+        <Controller
+          name="name"
+          control={control}
+          defaultValue=""
+          render={({ field }) => <input {...field} />}
+        />
+      </div>
 
-      {/* include validation with required or other standard HTML validation rules */}
-      <input {...register("exampleRequired", { required: true })} />
-      {/* errors will return when field validation fails  */}
-      {errors.name && <span>This field is required</span>}
+      <div>
+        <label>Description:</label>
+        {/* 'name' is the name of the field, and 'control' is from useForm() */}
+        <Controller
+          name="description"
+          control={control}
+          defaultValue=""
+          render={({ field }) => <textarea {...field} />}
+        />
+      </div>
 
-      <input type="submit" />
+      <button type="submit">Submit</button>
     </form>
   );
-}
+};
+
+export default ProjectForm;

@@ -2,7 +2,7 @@ import React from 'react';
 
 import List from './List';
 import './styles.css';
-import { ReactComponent as AddIcon } from '../images/icons/add.svg';
+import {ReactComponent as AddIcon } from '../images/icons/add.svg';
 
 const data = [
   {

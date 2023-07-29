@@ -1,10 +1,11 @@
 import React from 'react';
 
 import './dashboard.css';
+import Task from './Task';
+import Member from '../Member';
+import DashboardHome from '../DashboardHome';
 import DashboardHeader from '../DashboardHeader';
 import DashboardProject from "../DashboardProject";
-import Member from '../Member';
-import Task from './Task';
 
 const Dashboard = (props) => {
   const { selectedBoard, setSelectedBoard } = props;
@@ -12,13 +13,20 @@ const Dashboard = (props) => {
   const renderSelectedBoard = () => {
 
     switch (selectedBoard) {
-      case 3:
-        return <Member />;
-      default:
+      case 1:
+        return <DashboardHome />;
+      case 2:
         return <>
           <DashboardProject />
           <Task />
         </>;
+      case 3:
+        return <Member />;
+      case 4:
+        return <>
+
+        </>;
+      default:
     }
   };
 
