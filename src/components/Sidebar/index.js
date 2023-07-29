@@ -30,7 +30,7 @@ const Sidebar = (props) => {
       </div>
       <Menu {...props} />
       <ProjectMenu projects={props.projects} />
-      <Widget />
+      {/* <Widget /> */}
     </div>
   );
 };

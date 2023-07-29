@@ -11,27 +11,6 @@ import DashboardHeader from '../DashboardHeader';
 import DashboardProject from "../DashboardProject";
 
 const Dashboard = (props) => {
-  const { selectedBoard, setSelectedBoard } = props;
-
-  const RenderSelectedBoard = () => {
-
-    switch (selectedBoard) {
-      case 1:
-        return <DashboardHome />;
-      case 2:
-        return <>
-          <DashboardProject />
-          <Task />
-        </>;
-      case 3:
-        return <Member />;
-      case 4:
-        return <>
-
-        </>;
-      default:
-    }
-  };
 
   return (
     <div style={{
@@ -42,16 +21,15 @@ const Dashboard = (props) => {
       <div className='line-abs'></div>
       <div className='selectedBoard'>
         <Routes>
-          <Route path="/home" element={<ProjectForm />} />
+          <Route path="/home" element={<></>} />
           <Route path="/tasks" element={<>
             <DashboardProject />
             <Task />
           </>} />
           <Route path="/members" element={<Member />} />
-          <Route path="/settings" element={<ProjectForm />} />
+          <Route path="/settings" element={<></>} />
           <Route path="/add-project" element={<ProjectForm />} />
         </Routes>
-        {/* <RenderSelectedBoard /> */}
       </div>
     </div>
   );
