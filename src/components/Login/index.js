@@ -1,10 +1,14 @@
 import React from 'react';
-import * as fetch from '../../api/fetch';
+import { useNavigate } from 'react-router-dom';
+import ClipLoader from "react-spinners/ClipLoader";
 
 import './styles.css';
+import * as fetch from '../../api/fetch';
 
 const Login = () => {
+  const navigate = useNavigate();
   const [errorMessage, setErrorMessage] = React.useState('');
+  const [isLoading, setIsLoading] = React.useState(false);
   const [formData, setFormData] = React.useState({
     email: '',
     password: ''
@@ -18,22 +22,27 @@ const Login = () => {
     });
   };
 
+  const loginSuccess = () => {
+    localStorage.setItem('email', formData.email);
+    navigate('/home')
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    fetch.post('/login', formData)
+    setIsLoading(true);
+    setTimeout(() => {
+      fetch.post('/login', formData)
       .then(resp => {
         if (resp.success) {
-          setFormData({
-            name: '',
-            email: '',
-          });
+          loginSuccess();
         } else {
           setErrorMessage(resp.message);
         }
       }).catch(err => {
         console.log('Error occurred while making the API call:', err);
-      });
+      }).finally(() => setIsLoading(false));
+    }, 1000)
   };
 
   return (
@@ -55,17 +64,20 @@ const Login = () => {
             </div>}
             <div className='input-wrap'>
               <label htmlFor="email">Email</label>
-              <input type="text" id="email" name="email" value={formData.email}
+              <input type="email" id="email" name="email" value={formData.email}
                 onChange={handleChange} required />
             </div>
 
             <div className='input-wrap'>
               <label htmlFor="password">Password</label>
-              <input type="text" id="password" name="password" value={formData.password}
+              <input type="password" id="password" name="password" value={formData.password}
                 onChange={handleChange} required />
             </div>
             <span id='forgot-pass'>Forgot password?</span>
-            <input id='login-submit' type="submit" value="Submit" />
+            <button id='login-submit' type="submit" value="Submit" >
+              Submit&nbsp;
+              <ClipLoader size={10} color="#fff" speedMultiplier={2} loading={isLoading} />
+            </button>
           </form>
           <div id="sign-up-m">Don't have an account? <span>Sign up</span></div>
           <div id='copyright'>

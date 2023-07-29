@@ -79,7 +79,11 @@
   margin-bottom: 10px;
 }
 
-input[type=submit] {
+input[type=submit],
+#login-submit {
+  align-items: center;
+  display: flex;
+  justify-content: center;
   border-radius: 4px;
   background: #198754;
   padding: 10px 20px;
