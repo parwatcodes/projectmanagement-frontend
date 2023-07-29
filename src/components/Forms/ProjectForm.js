@@ -2,6 +2,7 @@ import React from 'react';
 import { useForm, Controller } from 'react-hook-form';
 
 const ProjectForm = () => {
+  console.log('0000')
   const { control, handleSubmit } = useForm();
 
   // This function will be called when the form is submitted

@@ -167,3 +167,18 @@
   line-height: normal;
   margin-left: 10px;
 }
+
+.add-project-btn {
+  height: 25px;
+  width: 25px;
+  cursor: pointer;
+}
+
+.add-project-btn:hover {
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  border-radius: 8px;
+}
+
+.link-r {
+  text-decoration: none;
+}

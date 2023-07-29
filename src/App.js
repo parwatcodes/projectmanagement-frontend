@@ -1,4 +1,5 @@
 import React from 'react';
+import { BrowserRouter as Router, Routes, Route, useNavigate, useLocation } from 'react-router-dom';
 
 import Dashboard from './components/Dashboard';
 import Sidebar from './components/Sidebar';
@@ -8,18 +9,29 @@ import './App.css';
 
 function App() {
   // Refactor: State
-  const [selectedBoard, setSelectedBoard] = React.useState(1);
+  const [selectedBoard, setSelectedBoard] = React.useState('home');
   // Project id, or use routing
-  const [selectedProject, setSelectedProject] = React.useState(1);
+  const [selectedProject, setSelectedProject] = React.useState();
   const [projects, setProjects] = React.useState([]);
+  const location = useLocation();
+  const navigate = useNavigate();
 
   React.useEffect(() => {
     try {
-      fetch.get('projects').then(resp => setProjects(resp.data));
+      fetch.get('projects').then(resp => {
+        setProjects(resp.data);
+        setSelectedProject(resp.data[0]);
+      });
     } catch (error) {
 
     }
-  },[]);
+  }, []);
+
+  React.useEffect(() => {
+    if (location.pathname === '/') {
+      navigate('/home');
+    }
+  }, []);
 
   return (
     <div className="app">

@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 import './sidebar.css';
 import AddIcon from '../images/icons/add.svg';
 
@@ -13,10 +15,9 @@ const ProjectMenu = (props) => {
         marginBottom: '10px'
       }}>
         <h2>MY PROJECTS</h2>
-        <img style={{
-          height: '25px',
-          width: '25px'
-        }} src={AddIcon} alt="" />
+        <Link to='add-project'>
+          <img className='add-project-btn' src={AddIcon} alt="" />
+        </Link>
       </div>
       <div className='project-list'>
         {projects.map(project => (

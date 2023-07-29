@@ -9,9 +9,8 @@ const RouteComp = () => {
   return (
     <Router>
       <Routes>
-        <Route exact path="/" element={<AppDash />} />
+        <Route exact path="*" element={<AppDash />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/dashboard" element={<AppDash />} />
       </Routes>
     </Router>
   );

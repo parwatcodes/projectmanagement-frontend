@@ -1,16 +1,19 @@
 import React from 'react';
+import { Route, Routes } from 'react-router-dom';
 
 import './dashboard.css';
 import Task from './Task';
 import Member from '../Member';
+import UserForm from '../Forms/UserForm';
 import DashboardHome from '../DashboardHome';
+import ProjectForm from '../Forms/ProjectForm';
 import DashboardHeader from '../DashboardHeader';
 import DashboardProject from "../DashboardProject";
 
 const Dashboard = (props) => {
   const { selectedBoard, setSelectedBoard } = props;
 
-  const renderSelectedBoard = () => {
+  const RenderSelectedBoard = () => {
 
     switch (selectedBoard) {
       case 1:
@@ -38,7 +41,17 @@ const Dashboard = (props) => {
       <DashboardHeader />
       <div className='line-abs'></div>
       <div className='selectedBoard'>
-        {renderSelectedBoard()}
+        <Routes>
+          <Route path="/home" element={<ProjectForm />} />
+          <Route path="/tasks" element={<>
+            <DashboardProject />
+            <Task />
+          </>} />
+          <Route path="/members" element={<Member />} />
+          <Route path="/settings" element={<ProjectForm />} />
+          <Route path="/add-project" element={<ProjectForm />} />
+        </Routes>
+        {/* <RenderSelectedBoard /> */}
       </div>
     </div>
   );
