@@ -34,7 +34,7 @@ input {
 label {
   font-size: 14px;
   font-style: normal;
-  font-weight: 400;
+  font-weight: 500;
   color: #0D062D;
   line-height: normal;
   margin-bottom: 10px;
@@ -98,7 +98,8 @@ button[type=submit] {
 }
 
 #p-textarea {
-  height: 150px;
+  height: 200px;
+  line-height: 1.5;
   padding: 10px 10px;
   border-radius: 5px;
   border: 0;

@@ -77,3 +77,17 @@ select {
   border: none;
   border-right: 10px solid transparent;
 }
+
+.edit-btn-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 5px;
+}
+
+.edit-btn:hover {
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  border-radius: 8px;
+  height: 30px;
+  cursor: pointer;
+}

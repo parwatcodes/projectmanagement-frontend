@@ -3,12 +3,15 @@ import { useForm, Controller } from 'react-hook-form';
 import { useNavigate, useParams } from 'react-router-dom';
 
 import * as apiMethods from './methods';
+import * as fetch from '../../api/fetch';
 
 const ProjectForm = () => {
   const { control, handleSubmit, setValue } = useForm();
   const navigate = useNavigate();
   const { projectId } = useParams();
   const [projectData, setProjectData] = React.useState(null);
+
+  console.log('para', projectId)
 
   React.useEffect(() => {
     const fetchProjectData = async () => {

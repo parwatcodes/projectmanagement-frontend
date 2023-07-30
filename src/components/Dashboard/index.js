@@ -49,6 +49,7 @@ const Dashboard = (props) => {
             <DashboardProject />
             <Task />
           </>} />
+          <Route path="/projects/:projectId/edit" element={<ProjectForm />} />
         </Routes>
       </div>
     </div>

@@ -1,6 +1,6 @@
 import React from "react";
 
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 
 import './styles.css';
 import * as fetch from '../../api/fetch';
@@ -11,6 +11,7 @@ import EditIcon from '../images/icons/edit.svg';
 const DashboardProject = (props) => {
   const { projectId } = useParams();
   const [projectData, setProjectData] = React.useState(null);
+  const navigate = useNavigate();
 
   React.useEffect(() => {
     const fetchProjectData = async () => {
@@ -40,11 +41,8 @@ const DashboardProject = (props) => {
           display: 'flex'
         }}>
           <div>{projectData?.name}</div>
-          <div style={{
-            display: 'flex',
-            marginLeft: '5px'
-          }}>
-            <img src={EditIcon} alt="" />
+          <div className='edit-btn-wrap' onClick={() => navigate(`/projects/${projectData._id}/edit`)}>
+            <img className="edit-btn" src={EditIcon} alt="" />
           </div>
         </div>
 
