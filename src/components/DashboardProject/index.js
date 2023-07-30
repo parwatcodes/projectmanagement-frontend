@@ -2,7 +2,7 @@ import React from "react";
 
 import './styles.css';
 import EditIcon from '../images/icons/edit.svg';
-import LinkIcon from '../images/icons/link.svg';
+// import LinkIcon from '../images/icons/link.svg';
 import AddIcon from '../images/icons/add.svg';
 
 const DashboardProject = (props) => {
