@@ -1,10 +1,15 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import './sidebar.css';
 import AddIcon from '../images/icons/add.svg';
 
 const ProjectMenu = (props) => {
-  const { projects } = props;
+  const { projects, selectedProject, setSelectedProject } = props;
+  const navigate = useNavigate();
+
+  const getSelectedStyle = (id) => {
+    return selectedProject === id ? 's-list selected' : 's-list';
+  };
 
   return (
     <div>
@@ -21,7 +26,10 @@ const ProjectMenu = (props) => {
       </div>
       <div className='project-list'>
         {projects.map(project => (
-          <div key={project._id} className='s-list selected'>
+          <div key={project._id} className={getSelectedStyle(project._id)} onClick={() => {
+            setSelectedProject(project._id);
+            navigate(`/projects/${project._id}`)
+          }}>
             <span className="dot"></span>
             <div >{project.name}</div>
           </div>

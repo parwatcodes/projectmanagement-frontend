@@ -4,10 +4,8 @@ import { useForm, Controller } from 'react-hook-form';
 const TaskForm = () => {
   const { control, handleSubmit, watch } = useForm();
 
-  // This function will be called when the form is submitted
   const onSubmit = (data) => {
     console.log(data);
-    // You can handle form submission logic here
   };
 
   const selectedRole = watch('role');

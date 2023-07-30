@@ -1,6 +1,8 @@
 import React from "react";
+import { useParams } from 'react-router-dom';
 
 import * as fetch from '../../api/fetch';
+import * as apiMethods from './methods';
 
 const initialCards = {
   todo: [
@@ -28,16 +30,27 @@ const listNameMappings = {
 
 const Task = () => {
   const [tasks, setTasks] = React.useState(initialCards);
+  const { projectId } = useParams();
 
-  React.useEffect(() => {
-    try {
-      fetch.get('/tasks')
-        .then(resp => setTasks(resp.data))
-        .catch(err => { throw err; });
-    } catch (error) {
-      console.log('console. error', error);
-    }
-  }, []);
+  // React.useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       if (projectId) { // fetch project only with the specific project id.
+  //         let resp = apiMethods.getTaskByProjectId(projectId);
+
+  //         setTasks(resp.data);
+  //       } else { // fetch all task regardless of which project they are from.
+  //         let resp = apiMethods.getTask();
+
+  //         setTasks(resp.data);
+  //       }
+  //     } catch (error) {
+  //       console.log('console. error', error);
+  //     }
+  //   };
+
+  //   fetchData();
+  // }, [projectId]);
 
   return (
     <div className="dashboard">

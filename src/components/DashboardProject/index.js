@@ -1,12 +1,32 @@
 import React from "react";
 
+import { useParams } from 'react-router-dom';
+
 import './styles.css';
+import * as fetch from '../../api/fetch';
+import AddIcon from '../images/icons/add.svg';
 import EditIcon from '../images/icons/edit.svg';
 // import LinkIcon from '../images/icons/link.svg';
-import AddIcon from '../images/icons/add.svg';
 
 const DashboardProject = (props) => {
-  const { selectedProject } = props;
+  const { projectId } = useParams();
+  const [projectData, setProjectData] = React.useState(null);
+
+  React.useEffect(() => {
+    const fetchProjectData = async () => {
+      try {
+        const { data, success } = await fetch.get(`/projects/${projectId}`);
+
+        setProjectData(data);
+      } catch (error) {
+        console.error('Error fetching user data:', error);
+      }
+    };
+
+    if (projectId) {
+      fetchProjectData();
+    }
+  }, [projectId]);
 
   return (
     <div className="project-label">
@@ -19,7 +39,7 @@ const DashboardProject = (props) => {
         <div className="title" style={{
           display: 'flex'
         }}>
-          <div>{selectedProject.name}</div>
+          <div>{projectData?.name}</div>
           <div style={{
             display: 'flex',
             marginLeft: '5px'

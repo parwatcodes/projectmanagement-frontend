@@ -2,6 +2,10 @@
   margin: 0 50% 0 0;
 }
 
+#project-form {
+  margin: 0 70% 0 0;
+}
+
 .row {
   display: flex;
   align-items: center;
@@ -91,4 +95,16 @@ button[type=submit] {
   margin-left: 10px !important;
   cursor: pointer;
 
+}
+
+#p-textarea {
+  height: 150px;
+  padding: 10px 10px;
+  border-radius: 5px;
+  border: 0;
+  outline: none;
+  min-width: 200px;
+  font-size: 14px;
+  background-color: #F5F5F5;
+  resize: none;
 }

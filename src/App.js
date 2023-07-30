@@ -20,7 +20,7 @@ function App() {
     try {
       fetch.get('/projects').then(resp => {
         setProjects(resp.data);
-        setSelectedProject(resp.data[0]);
+        setSelectedProject(resp.data[0]._id);
       });
     } catch (error) {
 
@@ -43,6 +43,8 @@ function App() {
           projects={projects}
           selectedBoard={selectedBoard}
           setSelectedBoard={setSelectedBoard}
+          selectedProject={selectedProject}
+          setSelectedProject={setSelectedProject}
         />
         <div className='line-v'></div>
         <Dashboard

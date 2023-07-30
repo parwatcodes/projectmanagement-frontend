@@ -4,7 +4,9 @@ const List = (props) => {
   const { data, navigate } = props;
 
   return (
-    <div>
+    <div className="dashboard" style={{
+      flexDirection: 'column'
+    }}>
       <div className='t-header'>
         <div id='h-col'>Fullname</div>
         <div id='h-col'>Email</div>

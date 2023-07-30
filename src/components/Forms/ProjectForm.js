@@ -1,42 +1,87 @@
 import React from 'react';
 import { useForm, Controller } from 'react-hook-form';
+import { useNavigate, useParams } from 'react-router-dom';
+
+import * as apiMethods from './methods';
 
 const ProjectForm = () => {
-  console.log('0000')
-  const { control, handleSubmit } = useForm();
+  const { control, handleSubmit, setValue } = useForm();
+  const navigate = useNavigate();
+  const { projectId } = useParams();
+  const [projectData, setProjectData] = React.useState(null);
 
-  // This function will be called when the form is submitted
-  const onSubmit = (data) => {
-    console.log(data);
-    // You can handle form submission logic here
+  React.useEffect(() => {
+    const fetchProjectData = async () => {
+      try {
+        const { data, success } = await fetch.get(`/projects/${projectId}`);
+
+        console.log(data);
+        setProjectData(data);
+
+        setValue('name', data.name);
+        setValue('description', data.description);
+      } catch (error) {
+        console.error('Error fetching user data:', error);
+      }
+    };
+
+    if (projectId) {
+      fetchProjectData();
+    }
+  }, [projectId, setValue]);
+
+  const onSubmit = async (data) => {
+    try {
+      if (projectId) {
+        let resp = await apiMethods.updateProject(projectId, { data });
+
+      } else {
+        let resp = await apiMethods.addProject(data);
+      }
+
+      window.location.reload();
+    } catch (error) {
+
+    }
   };
 
+  const formName = projectId ? 'Edit a project' : 'Add a project';
+
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <div>
-        <label>Name:</label>
-        {/* 'name' is the name of the field, and 'control' is from useForm() */}
-        <Controller
-          name="name"
-          control={control}
-          defaultValue=""
-          render={({ field }) => <input {...field} />}
-        />
-      </div>
+    <div id='project-form'>
+      <div className='head-title'>{formName}</div>
+      <form onSubmit={handleSubmit(onSubmit)}>
+      <div className='input-wrap'>
+          <label>Name:</label>
+          <Controller
+            name="name"
+            control={control}
+            defaultValue=""
+            render={({ field }) => <input {...field} />}
+          />
+        </div>
 
-      <div>
-        <label>Description:</label>
-        {/* 'name' is the name of the field, and 'control' is from useForm() */}
-        <Controller
-          name="description"
-          control={control}
-          defaultValue=""
-          render={({ field }) => <textarea {...field} />}
-        />
-      </div>
+        <div className='input-wrap'>
+          <label>Description:</label>
+          <Controller
+            name="description"
+            control={control}
+            defaultValue=""
+            render={({ field }) => <textarea id='p-textarea' {...field} />}
+          />
+        </div>
 
-      <button type="submit">Submit</button>
-    </form>
+        <div className='row btn-wrap'>
+          <div className='input-wrap btn'>
+            <button type="submit">Submit</button>
+          </div>
+
+          <div className='input-wrap btn' onClick={() => navigate(-1)}>
+            <button className='cancel'>Cancel</button>
+          </div>
+        </div>
+      </form>
+    </div>
   );
 };
 

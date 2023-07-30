@@ -1,5 +1,6 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import './dashboard.css';
 import Task from './Task';
@@ -10,6 +11,7 @@ import ProjectForm from '../Forms/ProjectForm';
 import DashboardHeader from '../DashboardHeader';
 import DashboardProject from "../DashboardProject";
 import TaskForm from '../Forms/TaskForm';
+import AddIcon from '../images/icons/add.svg';
 
 const Dashboard = (props) => {
 
@@ -24,7 +26,17 @@ const Dashboard = (props) => {
         <Routes>
           <Route path="/home" element={<></>} />
           <Route path="/tasks" element={<>
-            <DashboardProject selectedProject={props.selectedProject} />
+            <div style={{
+              display: 'flex',
+              alignItems: 'baseline'
+            }}>
+              <div className='head-title-display'>Tasks</div>
+              <Link to='add-task' style={{
+                marginLeft: '5px'
+              }}>
+                <img className='add-project-btn' src={AddIcon} alt="" />
+              </Link>
+            </div>
             <Task />
           </>} />
           <Route path="/members" element={<Member />} />
@@ -33,6 +45,10 @@ const Dashboard = (props) => {
           <Route path="/add-user" element={<UserForm />} />
           <Route path="/add-task" element={<TaskForm />} />
           <Route path="/members/:userid" element={<UserForm />} />
+          <Route path="/projects/:projectId" element={<>
+            <DashboardProject />
+            <Task />
+          </>} />
         </Routes>
       </div>
     </div>

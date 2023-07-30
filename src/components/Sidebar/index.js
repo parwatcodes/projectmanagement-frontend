@@ -5,7 +5,7 @@ import Widget from './Widget';
 import LeftArrow from '../images/icons/left-arrow.svg';
 
 const Sidebar = (props) => {
-
+  const { projects, selectedProject, setSelectedProject } = props;
   return (
     <div className="sidebar">
       <div className='logo-container'>
@@ -29,7 +29,11 @@ const Sidebar = (props) => {
         </div>
       </div>
       <Menu {...props} />
-      <ProjectMenu projects={props.projects} />
+      <ProjectMenu
+        projects={projects}
+        selectedProject={selectedProject}
+        setSelectedProject={setSelectedProject}
+      />
       {/* <Widget /> */}
     </div>
   );
