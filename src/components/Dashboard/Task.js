@@ -3,24 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 
 import * as apiMethods from './methods';
 import { ReactComponent as AddIcon } from '../images/icons/add.svg';
-import { listColors } from '../constants';
-
-const initialCards = {
-  todo: [
-    { id: '1', title: 'Brainstorming', description: "Brainstorming brings team members' diverse experience into play." },
-    { id: '2', title: 'Task 2', description: "Brainstorming brings team members' diverse experience into play." },
-  ],
-  inProgress: [
-    { id: '3', title: 'Task 3', description: "Brainstorming brings team members' diverse experience into play." },
-  ],
-  inReview: [
-    { id: '4', title: 'Task 4', description: "Brainstorming brings team members' diverse experience into play." },
-  ],
-  done: [
-    { id: '5', title: 'Task 5', description: "Brainstorming brings team members' diverse experience into play." },
-    { id: '6', title: 'Task 6', description: "Brainstorming brings team members' diverse experience into play." },
-  ],
-};
+import { listColors, statusColor, statusColorBg } from '../constants';
 
 const listNameMappings = {
   todo: 'To Do',
@@ -30,21 +13,44 @@ const listNameMappings = {
 };
 
 const Task = () => {
-  const [tasks, setTasks] = React.useState(initialCards);
+  const [tasks, setTasks] = React.useState({});
   const { projectId } = useParams();
   const navigate = useNavigate();
+
+  const transformData = (inputData) => {
+    const result = inputData.reduce((acc, task) => {
+      const { _id, name, description, status } = task;
+      const project = task.project_id;
+      const formattedTask = { _id: _id, title: name, description, project };
+
+      if (!acc[status]) {
+        acc[status] = [formattedTask];
+      } else {
+        acc[status].push(formattedTask);
+      }
+
+      return acc;
+    }, {
+      todo: [],
+      inProgress: [],
+      inReview: [],
+      done: []
+    });
+
+    return result;
+  };
 
   React.useEffect(() => {
     const fetchData = async () => {
       try {
         if (projectId) { // fetch project only with the specific project id.
-          let resp = apiMethods.getTaskByProjectId(projectId);
+          let resp = await apiMethods.getTaskByProjectId(projectId);
 
-          // setTasks(resp.data);
+          setTasks(transformData(resp.data));
         } else { // fetch all task regardless of which project they are from.
-          let resp = apiMethods.getTask();
+          let resp = await apiMethods.getTask();
 
-          // setTasks(resp.data);
+          setTasks(transformData(resp.data));
         }
       } catch (error) {
         console.log('console. error', error);
@@ -71,7 +77,10 @@ const Task = () => {
                 <div className="dot" style={{
                   backgroundColor: listColors[cardKey]
                 }}></div>
-                <div>{listNameMappings[cardKey]}</div>
+                <div>{listNameMappings[cardKey]} </div> &nbsp;
+                {listData.length > 0 && (
+                  <div id='task-count'>{listData.length}</div>
+                )}
               </div>
               {(cardKey === 'todo' && projectId) && (
                 <div className='add-mem' onClick={() => {
@@ -82,15 +91,23 @@ const Task = () => {
               )}
             </div>
             <div className='taskWrapper'>
-              {listData.map(data => (
-                <div className='task' onClick={() => {
-                  navigate(`/tasks/${data._id}`);
-                }}>
-                  <span className='status'>Low</span>
-                  <div className='task-title'>{data.title}</div>
-                  <div className='task-description'>{data.description}</div>
-                </div>
-              ))}
+              {listData.map(data => {
+                return (
+                  <div className='task' onClick={() => {
+                    navigate(`/tasks/${data._id}`);
+                  }}>
+                    <span className='status' style={{
+                      color: statusColor[data.priority],
+                      backgroundColor: statusColorBg[data.priority]
+                    }}>{data.priority || '_'}</span>
+                    <div className='task-title'>{data.title}</div>
+                    <div className='task-description'>{data.description}</div>
+                    <span className='task-project'>{data?.project?.name}</span>
+
+                    <div className="line"></div>
+                  </div>
+                )
+              })}
             </div>
           </div>
         );

@@ -45,6 +45,7 @@ const Dashboard = (props) => {
           <Route path="/add-project" element={<ProjectForm />} />
           <Route path="/users/add-user" element={<UserForm />} />
           <Route path="/tasks/add-task" element={<TaskForm />} />
+          <Route path="/tasks/:taskId" element={<TaskForm />} />
           <Route path="/projects/:projectId/add-task" element={<TaskForm />} />
           <Route path="/users/:userid" element={<UserForm />} />
           <Route path="/projects/:projectId" element={<>

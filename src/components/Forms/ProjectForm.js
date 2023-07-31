@@ -11,7 +11,7 @@ const ProjectForm = () => {
   const { projectId } = useParams();
   const [projectData, setProjectData] = React.useState(null);
 
-  console.log('para', projectId)
+  console.log('para', projectId);
 
   React.useEffect(() => {
     const fetchProjectData = async () => {
@@ -54,7 +54,7 @@ const ProjectForm = () => {
     <div id='project-form'>
       <div className='head-title'>{formName}</div>
       <form onSubmit={handleSubmit(onSubmit)}>
-      <div className='input-wrap'>
+        <div className='input-wrap'>
           <label>Name:</label>
           <Controller
             name="name"
@@ -79,7 +79,7 @@ const ProjectForm = () => {
             <button type="submit">Submit</button>
           </div>
 
-          <div className='input-wrap btn' onClick={() => navigate(-1)}>
+          <div className='input-wrap btn' onClick={() => { navigate(-1); }}>
             <button className='cancel'>Cancel</button>
           </div>
         </div>

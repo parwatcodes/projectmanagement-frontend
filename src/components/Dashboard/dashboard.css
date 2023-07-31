@@ -102,3 +102,24 @@ h2 {
 .selectedBoard {
   margin-top: 50px;
 }
+
+#task-count {
+  color: #625F6D;
+  background-color: #E0E0E0;
+  font-size: 12px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.task-project {
+  color: #1442AE !important;
+  border-radius: 5px;
+  padding: 2px 6px;
+  font-size: 12px;
+  font-weight: 600;
+  background: rgba(80, 48, 229, 0.08);
+}

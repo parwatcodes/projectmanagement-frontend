@@ -82,7 +82,7 @@ export async function addTask(data) {
 
 export async function updateTask(taskId, data) {
   try {
-    let resp = await fetch.put(`/tasks${taskId}`, data);
+    let resp = await fetch.put(`/tasks/${taskId}`, data);
 
     return resp;
   } catch (error) {

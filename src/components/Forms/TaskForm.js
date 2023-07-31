@@ -3,23 +3,44 @@ import { useForm, Controller } from 'react-hook-form';
 import { useParams, useNavigate } from 'react-router-dom';
 
 import * as apiMethods from './methods';
+import * as fetch from '../../api/fetch';
 
 const TaskForm = () => {
   const { control, handleSubmit, watch, formState, setValue } = useForm();
   const [members, setMembers] = React.useState([]);
   const [projects, setProjects] = React.useState([]);
+  const [taskData, setTaskData] = React.useState({});
 
   const { projectId, taskId } = useParams();
   const navigate = useNavigate();
 
   React.useEffect(() => {
     if (taskId) {
+      const fetchTaskData = async () => {
+        try {
+          const { data, success } = await fetch.get(`/tasks/${taskId}`);
 
+          console.log(data);
+          setTaskData(data);
+
+          setValue('name', data.name);
+          setValue('description', data.description);
+          setValue('status', data.status);
+          setValue('priority', data.priority);
+          setValue('startDate', data.startDate);
+          setValue('endDate', data.endDate);
+          setValue('assignedTo', data.assignedTo);
+          setValue('project_id', data.project_id);
+        } catch (error) {
+          console.error('Error fetching task data:', error);
+        }
+      };
+      fetchTaskData();
     } else {
       setValue('status', 'todo');
       setValue('priority', 'low');
     }
-  }, []);
+  }, [taskId, setValue]);
 
   React.useEffect(() => {
     if (projectId) {
@@ -36,8 +57,8 @@ const TaskForm = () => {
         .catch((error) => console.error('Error fetching project: ', error));
     } else {
       apiMethods.getProjects()
-      .then(({ data, success }) => setProjects(data))
-      .catch((error) => console.error('Error fetching project: ', error));
+        .then(({ data, success }) => setProjects(data))
+        .catch((error) => console.error('Error fetching project: ', error));
     }
   }, [projectId]);
 
@@ -220,7 +241,7 @@ const TaskForm = () => {
           <div className='input-wrap btn'>
             <button type="submit">Submit</button>
           </div>
-          <div className='input-wrap btn' onClick={() => navigate(-1)}>
+          <div className='input-wrap btn' onClick={() => { navigate(-1); }}>
             <button className='cancel'>Cancel</button>
           </div>
         </div>
