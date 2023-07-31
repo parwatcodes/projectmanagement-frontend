@@ -1,8 +1,9 @@
 import React from "react";
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 
-import * as fetch from '../../api/fetch';
 import * as apiMethods from './methods';
+import { ReactComponent as AddIcon } from '../images/icons/add.svg';
+import { listColors } from '../constants';
 
 const initialCards = {
   todo: [
@@ -31,26 +32,27 @@ const listNameMappings = {
 const Task = () => {
   const [tasks, setTasks] = React.useState(initialCards);
   const { projectId } = useParams();
+  const navigate = useNavigate();
 
-  // React.useEffect(() => {
-  //   const fetchData = async () => {
-  //     try {
-  //       if (projectId) { // fetch project only with the specific project id.
-  //         let resp = apiMethods.getTaskByProjectId(projectId);
+  React.useEffect(() => {
+    const fetchData = async () => {
+      try {
+        if (projectId) { // fetch project only with the specific project id.
+          let resp = apiMethods.getTaskByProjectId(projectId);
 
-  //         setTasks(resp.data);
-  //       } else { // fetch all task regardless of which project they are from.
-  //         let resp = apiMethods.getTask();
+          // setTasks(resp.data);
+        } else { // fetch all task regardless of which project they are from.
+          let resp = apiMethods.getTask();
 
-  //         setTasks(resp.data);
-  //       }
-  //     } catch (error) {
-  //       console.log('console. error', error);
-  //     }
-  //   };
+          // setTasks(resp.data);
+        }
+      } catch (error) {
+        console.log('console. error', error);
+      }
+    };
 
-  //   fetchData();
-  // }, [projectId]);
+    fetchData();
+  }, [projectId]);
 
   return (
     <div className="dashboard">
@@ -59,14 +61,31 @@ const Task = () => {
 
         return (
           <div className='list' key={cardKey}>
-            <div className='listName'>
-              <div className="dot"></div>
-              <div>{listNameMappings[cardKey]}</div>
-              <div>+</div>
+            <div className='listName' style={{
+              borderBottom: `2.5px solid ${listColors[cardKey]}`
+            }}>
+              <div style={{
+                display: 'flex',
+                alignItems: 'center'
+              }}>
+                <div className="dot" style={{
+                  backgroundColor: listColors[cardKey]
+                }}></div>
+                <div>{listNameMappings[cardKey]}</div>
+              </div>
+              {(cardKey === 'todo' && projectId) && (
+                <div className='add-mem' onClick={() => {
+                  navigate(`${window.location.pathname}/add-task`);
+                }}>
+                  <AddIcon height={30} width={30} />
+                </div>
+              )}
             </div>
             <div className='taskWrapper'>
               {listData.map(data => (
-                <div className='task'>
+                <div className='task' onClick={() => {
+                  navigate(`/tasks/${data._id}`);
+                }}>
                   <span className='status'>Low</span>
                   <div className='task-title'>{data.title}</div>
                   <div className='task-description'>{data.description}</div>

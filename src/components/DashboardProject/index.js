@@ -1,22 +1,32 @@
 import React from "react";
 
 import { useParams, useNavigate } from 'react-router-dom';
+import { Tooltip } from 'react-tooltip';
+import Select from 'react-select';
 
 import './styles.css';
 import * as fetch from '../../api/fetch';
 import AddIcon from '../images/icons/add.svg';
 import EditIcon from '../images/icons/edit.svg';
 // import LinkIcon from '../images/icons/link.svg';
+import * as apiMethods from './methods';
 
 const DashboardProject = (props) => {
   const { projectId } = useParams();
-  const [projectData, setProjectData] = React.useState(null);
+  const [projectData, setProjectData] = React.useState([]);
+  const [members, setMembers] = React.useState([]);
+  const [filteredMembers, setFilteredMembers] = React.useState([]);
+  const [showDropdown, setShowDropdown] = React.useState(false);
+
+  const toggleDropdown = () => {
+    setShowDropdown(!showDropdown);
+  };
   const navigate = useNavigate();
 
   React.useEffect(() => {
     const fetchProjectData = async () => {
       try {
-        const { data, success } = await fetch.get(`/projects/${projectId}`);
+        const { data, success } = await fetch.get(`/projects/${projectId}?all=true`);
 
         setProjectData(data);
       } catch (error) {
@@ -29,6 +39,34 @@ const DashboardProject = (props) => {
     }
   }, [projectId]);
 
+  React.useEffect(() => {
+    apiMethods.fetchMembers()
+      .then(({ data, success }) => {
+        setMembers(data);
+      })
+      .catch(error => {
+        console.error("Error fetching members: ", error);
+      });
+  }, []);
+
+  React.useEffect(() => {
+    const filteredMembers = members?.filter(member => !projectData?.projectMembers?.some(projMember => projMember._id === member._id));
+
+    setMembers(filteredMembers);
+  }, [projectData?.projectMembers]);
+
+  const handleOptionChange = async (event) => {
+    const memberId = event.target.value;
+
+    apiMethods.addMemberToProject(projectId, memberId)
+      .then(resp => {
+        console.log('Added', resp);
+      })
+      .catch(error => console.log("error adding member: ", error));
+
+    toggleDropdown();
+  };
+
   return (
     <div className="project-label">
       <div style={{
@@ -40,7 +78,7 @@ const DashboardProject = (props) => {
         <div className="title" style={{
           display: 'flex'
         }}>
-          <div>{projectData?.name}</div>
+          <div>{projectData?.project?.name}</div>
           <div className='edit-btn-wrap' onClick={() => navigate(`/projects/${projectData._id}/edit`)}>
             <img className="edit-btn" src={EditIcon} alt="" />
           </div>
@@ -50,14 +88,34 @@ const DashboardProject = (props) => {
           display: 'flex'
         }}>
           <div className="invite-member">
-            <img src={AddIcon} alt="" />
-            <p>Invite</p>
+            {/* <div id='btn' onClick={toggleDropdown}>
+              <img src={AddIcon} alt="" />
+              <p>Invite</p>
+
+            </div> */}
+            <div className="custom-seleect">
+              <select onChange={handleOptionChange} className="select">
+                <option value="" selected disabled> + Select a member</option>
+                {members.map(member => (
+                  <option className="option" key={member._id} value={member._id}>{member.fullname}</option>
+                ))}
+              </select>
+            </div>
           </div>
-          <div className="members">
-            <img src={'https://i.pravatar.cc/500?img=1'} alt="" />
-            <img src={'https://i.pravatar.cc/500?img=2'} alt="" />
-            <img src={'https://i.pravatar.cc/500?img=3'} alt="" />
-            <img src={'https://i.pravatar.cc/500?img=4'} alt="" />
+          <div className="members ">
+            {projectData?.projectMembers?.map((member, idx) => (
+              <a key={member._id} className="tooltip">
+                <img src={`https://i.pravatar.cc/500?img=${idx}`} alt="" />
+              </a>
+            ))}
+            <Tooltip
+              style={{
+                fontSize: '12px'
+              }}
+              id="registerTip"
+              anchorSelect=".tooltip"
+            // content="parwat kunwar"
+            />
           </div>
         </div>
       </div>

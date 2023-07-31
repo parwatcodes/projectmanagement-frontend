@@ -23,9 +23,9 @@ const Member = () => {
   return (
     <>
       <div className='member-header'>
-        <div>Members</div>
+        <div>Users</div>
         <div className='add-mem' onClick={() => {
-          navigate('/add-user')
+          navigate('/users/add-user')
         }}>
           <AddIcon height={30} width={30} />
         </div>

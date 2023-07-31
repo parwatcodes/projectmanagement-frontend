@@ -56,7 +56,7 @@ const UserForm = () => {
         let resp = await apiMethods.addUser(data);
       }
 
-      navigate('/members');
+      navigate('/users');
     } catch (error) {
 
     }
@@ -167,7 +167,7 @@ const UserForm = () => {
             <button type="submit">Submit</button>
           </div>
 
-          <div className='input-wrap btn' onClick={() => navigate('/members')}>
+          <div className='input-wrap btn' onClick={() => navigate('/users')}>
             <button className='cancel'>Cancel</button>
           </div>
         </div>

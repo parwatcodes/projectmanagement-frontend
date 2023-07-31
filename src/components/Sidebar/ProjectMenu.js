@@ -2,6 +2,7 @@ import { Link, useNavigate } from 'react-router-dom';
 
 import './sidebar.css';
 import AddIcon from '../images/icons/add.svg';
+import { getRandomColor } from '../methods';
 
 const ProjectMenu = (props) => {
   const { projects, selectedProject, setSelectedProject } = props;
@@ -30,7 +31,9 @@ const ProjectMenu = (props) => {
             setSelectedProject(project._id);
             navigate(`/projects/${project._id}`)
           }}>
-            <span className="dot"></span>
+            <span className="dot" style={{
+              backgroundColor: getRandomColor()
+            }}></span>
             <div >{project.name}</div>
           </div>
         ))}

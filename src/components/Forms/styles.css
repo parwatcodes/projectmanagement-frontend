@@ -6,6 +6,10 @@
   margin: 0 70% 0 0;
 }
 
+#task-form {
+  margin: 0 60% 0 0;
+}
+
 .row {
   display: flex;
   align-items: center;
@@ -61,9 +65,15 @@ button[type=submit] {
   border-radius: 5px;
   padding: 10px;
   outline: none;
-  border: 1px solid #666060;
   background-color: #F5F5F5;
+}
 
+.form-select {
+  border-radius: 5px;
+  padding: 10px;
+  outline: none;
+  width: 90%;
+  background-color: #F5F5F5;
 }
 
 .btn-wrap {
@@ -75,6 +85,7 @@ button[type=submit] {
 }
 
 .error {
+  display: block;
   margin-top: 2px;
   color: red;
   font-size: 12px;
@@ -98,7 +109,7 @@ button[type=submit] {
 }
 
 #p-textarea {
-  height: 200px;
+  height: 150px;
   line-height: 1.5;
   padding: 10px 10px;
   border-radius: 5px;
@@ -108,4 +119,13 @@ button[type=submit] {
   font-size: 14px;
   background-color: #F5F5F5;
   resize: none;
+}
+
+.task-form-col-child {
+  margin-top: 20px;
+}
+
+.task-form-col-child label {
+  display: block;
+  margin-bottom: 10px;
 }

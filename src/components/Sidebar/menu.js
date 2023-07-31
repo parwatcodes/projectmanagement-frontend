@@ -42,10 +42,10 @@ const Menu = (props) => {
             <div>Tasks</div>
           </div>
         </Link>
-        <Link to='/members' className="link-r">
+        <Link to='/users' className="link-r">
           <div className={getSelectedStyle(3)} onClick={() => handleTabClick(3)}>
             <MemberIcon />
-            <div>Members</div>
+            <div>Users</div>
           </div>
         </Link>
         <Link to='/settings' className="link-r">

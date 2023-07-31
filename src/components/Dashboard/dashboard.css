@@ -22,9 +22,10 @@
   font-weight: 500;
   line-height: normal;
   border-bottom: 3px solid blue;
-  padding: 5px 20px 15px 0px;
+  padding: 5px 0px 15px 0px;
   display: flex;
   align-items: center;
+  justify-content: space-between;
 }
 
 .status {
@@ -52,6 +53,11 @@
   border-radius: 10px;
   background: #FFF;
   padding: 20px;
+  cursor: pointer;
+}
+
+.task:hover {
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
 }
 
 .task * {

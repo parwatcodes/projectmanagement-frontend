@@ -6,6 +6,7 @@ import RouteComp from './RouteComp';
 // import App from './App';
 
 import './index.css'
+import 'react-tooltip/dist/react-tooltip.css'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 

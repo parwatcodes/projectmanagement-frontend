@@ -1,9 +1,8 @@
 .project-label {
-  font-size: 40px;
+  font-size: 35px;
   font-weight: 700;
   color: #0D062D;
   font-family: Inter;
-  font-size: 40px;
   font-style: normal;
   font-weight: 600;
   line-height: normal;
@@ -32,9 +31,12 @@
   display: flex;
   align-items: center;
   margin-right: 25px;
+  position: relative;
+
 }
 
-.invite-member p {
+.invite-member #btn {
+  display: flex;
   color: #5030E5;
   font-size: 14px;
   font-style: normal;
@@ -42,7 +44,21 @@
   font-weight: 500;
   line-height: normal;
   text-transform: capitalize;
-  margin-left: 5px;
+  padding: 2px 4px;
+}
+
+.invite-member #btn img {
+  margin-right: 5px;
+}
+
+.invite-member #btn p {
+  margin: 0px;
+}
+
+.invite-member #btn:hover {
+  cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  border-radius: 8px;
 }
 
 .select-wrapper {
@@ -90,4 +106,20 @@ select {
   border-radius: 8px;
   height: 30px;
   cursor: pointer;
+}
+
+.custom-select {
+  position: absolute;
+  z-index: 1111;
+  top: 30px;
+  right: 5px;
+}
+
+.option {
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+
+
+.react-select__value-container {
+  height: 3rem;
 }
