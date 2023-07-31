@@ -16,13 +16,13 @@ const ProjectForm = () => {
   React.useEffect(() => {
     const fetchProjectData = async () => {
       try {
-        const { data, success } = await fetch.get(`/projects/${projectId}`);
+        const { data: { project }, success } = await fetch.get(`/projects/${projectId}`);
 
-        console.log(data);
-        setProjectData(data);
+        console.log(project);
+        setProjectData(project);
 
-        setValue('name', data.name);
-        setValue('description', data.description);
+        setValue('name', project.name);
+        setValue('description', project.description);
       } catch (error) {
         console.error('Error fetching user data:', error);
       }

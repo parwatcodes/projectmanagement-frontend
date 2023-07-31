@@ -16,3 +16,9 @@ export const statusColorBg = {
   medium: 'rgba(223, 168, 116, 0.20)',
   high: 'rgba(216, 114, 125, 0.20)'
 }
+
+export const priorityMap = {
+  low: 'Low',
+  medium: 'Medium',
+  high: 'High'
+}

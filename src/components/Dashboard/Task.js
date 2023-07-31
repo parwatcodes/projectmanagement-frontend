@@ -3,7 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 
 import * as apiMethods from './methods';
 import { ReactComponent as AddIcon } from '../images/icons/add.svg';
-import { listColors, statusColor, statusColorBg } from '../constants';
+import { listColors, priorityMap, statusColor, statusColorBg } from '../constants';
 
 const listNameMappings = {
   todo: 'To Do',
@@ -20,8 +20,8 @@ const Task = () => {
   const transformData = (inputData) => {
     const result = inputData.reduce((acc, task) => {
       const { _id, name, description, status } = task;
-      const project = task.project_id;
-      const formattedTask = { _id: _id, title: name, description, project };
+      // const project = task.project_id;
+      const formattedTask = task;
 
       if (!acc[status]) {
         acc[status] = [formattedTask];
@@ -92,6 +92,7 @@ const Task = () => {
             </div>
             <div className='taskWrapper'>
               {listData.map(data => {
+                console.log('d', data)
                 return (
                   <div className='task' onClick={() => {
                     navigate(`/tasks/${data._id}`);
@@ -99,10 +100,10 @@ const Task = () => {
                     <span className='status' style={{
                       color: statusColor[data.priority],
                       backgroundColor: statusColorBg[data.priority]
-                    }}>{data.priority || '_'}</span>
+                    }}>{priorityMap[data.priority]}</span>
                     <div className='task-title'>{data.title}</div>
                     <div className='task-description'>{data.description}</div>
-                    <span className='task-project'>{data?.project?.name}</span>
+                    <span className='task-project'>{data?.project_id?.name}</span>
 
                     <div className="line"></div>
                   </div>

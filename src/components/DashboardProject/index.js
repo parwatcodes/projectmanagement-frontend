@@ -15,7 +15,6 @@ const DashboardProject = (props) => {
   const { projectId } = useParams();
   const [projectData, setProjectData] = React.useState([]);
   const [members, setMembers] = React.useState([]);
-  const [filteredMembers, setFilteredMembers] = React.useState([]);
   const [showDropdown, setShowDropdown] = React.useState(false);
 
   const toggleDropdown = () => {
@@ -47,13 +46,13 @@ const DashboardProject = (props) => {
       .catch(error => {
         console.error("Error fetching members: ", error);
       });
-  }, []);
+  }, [projectId]);
 
   React.useEffect(() => {
     const filteredMembers = members?.filter(member => !projectData?.projectMembers?.some(projMember => projMember._id === member._id));
 
     setMembers(filteredMembers);
-  }, [projectData?.projectMembers]);
+  }, [projectData?.projectMembers, projectId]);
 
   const handleOptionChange = async (event) => {
     const memberId = event.target.value;
@@ -79,7 +78,7 @@ const DashboardProject = (props) => {
           display: 'flex'
         }}>
           <div>{projectData?.project?.name}</div>
-          <div className='edit-btn-wrap' onClick={() => navigate(`/projects/${projectData._id}/edit`)}>
+          <div className='edit-btn-wrap' onClick={() => navigate(`/projects/${projectData.project._id}/edit`)}>
             <img className="edit-btn" src={EditIcon} alt="" />
           </div>
         </div>
