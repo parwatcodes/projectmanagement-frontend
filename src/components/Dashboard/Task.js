@@ -3,14 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 
 import * as apiMethods from './methods';
 import { ReactComponent as AddIcon } from '../images/icons/add.svg';
-import { listColors, priorityMap, statusColor, statusColorBg } from '../constants';
-
-const listNameMappings = {
-  todo: 'To Do',
-  inProgress: 'In Progress',
-  inReview: 'In Review',
-  done: 'Done'
-};
+import { listColors, priorityMap, statusColor, statusColorBg, listNameMappings } from '../constants';
 
 const Task = () => {
   const [tasks, setTasks] = React.useState({});
@@ -43,7 +36,7 @@ const Task = () => {
   React.useEffect(() => {
     const fetchData = async () => {
       try {
-        if (projectId) { // fetch project only with the specific project id.
+        if (projectId) { // fetch task only with the specific project id.
           let resp = await apiMethods.getTaskByProjectId(projectId);
 
           setTasks(transformData(resp.data));
@@ -95,7 +88,13 @@ const Task = () => {
                 console.log('d', data)
                 return (
                   <div className='task' onClick={() => {
-                    navigate(`/tasks/${data._id}`);
+                    let pathname = `/tasks/${data._id}`;
+
+                    if (projectId) {
+                      pathname = `/projects/${projectId}/tasks/${data._id}`;
+                    }
+
+                    navigate(pathname);
                   }}>
                     <span className='status' style={{
                       color: statusColor[data.priority],

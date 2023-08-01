@@ -13,6 +13,7 @@ const TaskForm = () => {
 
   const { projectId, taskId } = useParams();
   const navigate = useNavigate();
+  const project_id = watch('project_id');
 
   React.useEffect(() => {
     if (taskId) {
@@ -67,6 +68,18 @@ const TaskForm = () => {
       setValue('project_id', projects[0]._id);
     }
   }, [projects]);
+
+  React.useEffect(() => {
+    if (project_id) {
+      apiMethods.getMembersByProject(project_id)
+        .then(({ data, success }) => {
+          setMembers(data);
+        })
+        .catch((error) => {
+          console.error('Error fetching members: ', error);
+        });
+    }
+  }, [project_id]);
 
   const onSubmit = async (data) => {
     try {

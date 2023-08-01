@@ -22,3 +22,10 @@ export const priorityMap = {
   medium: 'Medium',
   high: 'High'
 }
+
+export const listNameMappings = {
+  todo: 'To Do',
+  inProgress: 'In Progress',
+  inReview: 'In Review',
+  done: 'Done'
+};

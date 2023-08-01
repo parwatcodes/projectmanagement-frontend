@@ -1,0 +1,148 @@
+.home-wrapper {
+  background-color: ghostwhite;
+}
+
+#total-project {
+  height: 300px;
+  width: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: #8CC0DE;
+  border-radius: 5px;
+  color: #fff;
+}
+
+#total-project span {
+  text-shadow: 0px 1px 4px #23430C;
+}
+
+.user-wrapper {
+  margin-left: 20px;
+  display: flex;
+  align-items: center;
+  border-radius: 5px;
+  background-color: #9376E0;
+  flex: 1;
+}
+
+#user-types {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.type {
+  display: flex;
+}
+
+
+#total-users {
+  height: 300px;
+  width: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 5px;
+  margin-left: 20px;
+  color: #fff;
+}
+
+#total,
+#total-u {
+  font-size: 10rem;
+  font-weight: 700;
+  color: #fff;
+  text-shadow: 0 2px 2px #dfdfdf,
+  -2px 5px 1px #cbcbcb,
+  -4px 8px 1px #979797,
+  -6px 11px 1px #a2a2a2,
+  -8px 14px 1px #aeaeae,
+  -10px 17px 1px #b5b5b5,
+  -12px 20px 1px #bebebe,
+  -14px 23px 1px #cecece,
+  -16px 26px 1px #dbdbdb,
+  -18px 29px 1px #dfdfdf;
+}
+
+#total-users span {
+  font-weight: 700;
+  font-size: 2rem;
+  text-shadow: 0px 1px 4px #23430C;
+}
+
+#total-t {
+  font-size: 10rem;
+  font-weight: 700;
+  color: #fff;
+  text-shadow: 0 2px 2px #dfdfdf,
+  -2px 5px 1px #cbcbcb,
+  -4px 8px 1px #979797,
+  -6px 11px 1px #a2a2a2,
+  -8px 14px 1px #aeaeae,
+  -10px 17px 1px #b5b5b5,
+  -12px 20px 1px #bebebe,
+  -14px 23px 1px #cecece,
+  -16px 26px 1px #dbdbdb,
+  -18px 29px 1px #dfdfdf;
+}
+
+#total-project span {
+  font-weight: 700;
+  font-size: 2rem;
+  text-shadow: 0px 1px 4px #23430C;
+}
+
+#total-task {
+  height: 250px;
+  width: 250px;
+  align-self: flex-end;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  /* border-radius: 5px; */
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  color: #fff;
+  background-color: rgb(95, 158, 111) !important;
+  text-shadow: 3px 0px 7px rgba(81,67,21,0.8), -3px 0px 7px rgba(81,67,21,0.8), 0px 4px 7px rgba(81,67,21,0.8);
+}
+
+.taskByStatus {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: rgb(95, 158, 111);
+  color: white;
+  font-weight: 700;
+  padding: 40px;
+  font-size: 1.5rem;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  width: 100%;
+}
+
+.listTask {
+  padding: 10px;
+  text-shadow: 0px 1px 4px #23430C;
+}
+
+.listTask span {
+  font-size: 2rem;
+  font-weight: bolder;
+  color: #DDE6ED;
+  text-shadow: 0px 1px 4px #23430C;
+}
+
+#total-task span {
+  font-weight: 700;
+  font-size: 2rem;
+  text-shadow: 0px 1px 4px #23430C;
+}
+
+.listTask:not(:last-child) {
+  margin-bottom: 5px;
+}
