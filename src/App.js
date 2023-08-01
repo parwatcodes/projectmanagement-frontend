@@ -20,7 +20,7 @@ function App() {
     try {
       fetch.get('/projects').then(resp => {
         setProjects(resp.data);
-        setSelectedProject(resp.data[0]._id);
+        // setSelectedProject(resp.data[0]._id);
       });
     } catch (error) {
 
