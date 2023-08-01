@@ -22,8 +22,9 @@ const Login = () => {
     });
   };
 
-  const loginSuccess = () => {
-    localStorage.setItem('email', formData.email);
+  const loginSuccess = (data) => {
+    localStorage.setItem('email', data.email);
+    localStorage.setItem('id', data._id);
     navigate('/home');
   };
 
@@ -35,7 +36,7 @@ const Login = () => {
       fetch.post('/login', formData)
         .then(resp => {
           if (resp.success) {
-            loginSuccess();
+            loginSuccess(resp.data);
           } else {
             setErrorMessage(resp.message);
           }
